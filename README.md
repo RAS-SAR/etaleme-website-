@@ -1,4 +1,3 @@
-[etaleme_website.html](https://github.com/user-attachments/files/33664882/etaleme_website.html)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,142 +5,250 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Etaleme Solutions — Reusable Body Care, Made with Dignity</title>
 <meta name="description" content="Affordable, skin-friendly, reusable body care alternatives for mothers, fistula patients, nursing mothers, and women across Addis Ababa and Sheger City.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,500;0,600;1,400&family=Noto+Sans+Ethiopic:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #1a5c4a;
-    --accent:  #e8a13c;
-    --olive:   #6b7a3a;
-    --bg:      #faf7f2;
+    --primary: #0F5D4E; 
+    --accent:  #E8A23A; 
+    --olive:   #5B6F3A; 
+    --bg:      #F4EDE2; 
     --text:    #2b2b2b;
     --light:   #ffffff;
+    --border:  #e0dcd3;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
-    font-family: 'Segoe UI', 'Noto Sans Ethiopic', system-ui, sans-serif;
+    font-family: 'Inter', 'Noto Sans Ethiopic', sans-serif;
     color: var(--text); background: var(--bg); line-height: 1.6;
   }
-  .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 {
+    font-family: 'Lora', 'Noto Sans Ethiopic', serif;
+    font-weight: 600;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-  section { scroll-margin-top: 80px; }
+  section { scroll-margin-top: 90px; padding: 80px 0; }
 
+  /* --- ANIMATIONS & EFFECTS --- */
+  /* Scroll Reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Logo Drop Bounce on Hover */
+  .logo-drop {
+    transition: transform 0.3s ease;
+    transform-origin: center bottom;
+  }
+  .brand:hover .logo-drop {
+    animation: pulseDrop 1s ease-in-out infinite alternate;
+  }
+  @keyframes pulseDrop {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
+  }
+  /* --------------------------- */
+
+  /* --- NAVIGATION --- */
   nav {
-    background: var(--light); padding: 16px 0;
-    box-shadow: 0 1px 4px rgba(0,0,0,.08);
-    position: sticky; top: 0; z-index: 10;
+    background: rgba(255, 255, 255, 0.95); 
+    backdrop-filter: blur(10px);
+    padding: 12px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+    position: sticky; top: 0; z-index: 100;
   }
   nav .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-  .logo { font-weight: 700; color: var(--primary); font-size: 1.2rem; text-decoration: none; }
-  .nav-right { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-  nav ul { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; }
-  nav a { text-decoration: none; color: var(--text); font-weight: 500; }
-  nav a:hover { color: var(--primary); }
-  .lang-group { display: flex; gap: 6px; }
+  
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand svg { width: 42px; height: 42px; }
+  .brand-text { font-family: 'Lora', serif; font-weight: 600; color: var(--primary); font-size: 1.3rem; letter-spacing: -0.5px; }
+  
+  .nav-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  nav ul { list-style: none; display: flex; gap: 24px; flex-wrap: wrap; }
+  nav a.nav-link { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+  nav a.nav-link:hover { color: var(--primary); }
+  
+  .lang-group { display: flex; gap: 4px; background: #eee; padding: 4px; border-radius: 20px; }
   .lang-btn {
-    background: var(--primary); color: var(--light); border: none;
-    padding: 8px 14px; border-radius: 20px; cursor: pointer; font-weight: 600;
-    font-size: .85rem;
+    background: transparent; color: var(--text); border: none;
+    padding: 6px 12px; border-radius: 16px; cursor: pointer; font-weight: 600;
+    font-size: .8rem; transition: all 0.2s;
   }
-  .lang-btn[aria-pressed="true"] { background: var(--olive); }
+  .lang-btn[aria-pressed="true"] { background: var(--primary); color: var(--light); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
-  header { padding: 80px 0 60px; text-align: center; position: relative; overflow: hidden; }
-  header .wave-bg {
-    position: absolute; inset: 0; z-index: -1;
-    background: linear-gradient(180deg, #e8f2ee 0%, var(--bg) 70%);
+  /* --- HERO SECTION --- */
+  header { 
+    padding: 80px 0 100px; 
+    position: relative; 
+    overflow: hidden; 
+    background: linear-gradient(180deg, #EBE5D9 0%, var(--bg) 100%);
   }
-  header .wave-bg svg { position: absolute; bottom: -2px; left: 0; width: 100%; height: auto; }
-  header .container { position: relative; z-index: 1; }
-  header h1 { font-size: clamp(1.6rem, 5vw, 3rem); color: var(--primary); margin-bottom: 16px; }
-  header p { max-width: 720px; margin: 0 auto; font-size: 1.15rem; color: #555; }
+  header .container { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 50px; }
+  .hero-text { flex: 1.2; text-align: left; }
+  .hero-image { flex: 0.8; display: flex; justify-content: center; position: relative; }
+  
+  header h1 { font-size: clamp(2rem, 4vw, 3.2rem); color: var(--primary); margin-bottom: 20px; line-height: 1.2; }
+  header p { font-size: 1.15rem; color: #444; margin-bottom: 30px; max-width: 600px; }
+  
+  .hero-image img { 
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 50%; 
+    box-shadow: 0 20px 40px rgba(15, 93, 78, 0.15); 
+    border: 4px solid rgba(255,255,255,0.5);
+  }
+  
   .cta {
-    display: inline-block; margin-top: 28px; padding: 14px 32px;
-    background: var(--primary); color: var(--light);
-    border-radius: 30px; text-decoration: none; font-weight: 600;
+    display: inline-block; padding: 14px 32px;
+    background: var(--accent); color: #111;
+    border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 1.05rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(232, 162, 58, 0.3);
   }
-  .cta:hover { background: #14453a; }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232, 162, 58, 0.4); }
 
   .status-line {
-    display: inline-block; margin-top: 18px; padding: 6px 16px;
-    background: #fff3e0; color: #8a5a00; border-radius: 20px; font-size: .85rem; font-weight: 600;
+    display: inline-block; margin-top: 20px; padding: 8px 16px;
+    background: rgba(91, 111, 58, 0.1); color: var(--olive); 
+    border-radius: 20px; font-size: .85rem; font-weight: 600;
+    border: 1px solid rgba(91, 111, 58, 0.2);
   }
 
-  .mission, .why { padding: 60px 0; }
-  .mission h2, .why h2 { color: var(--primary); margin-bottom: 16px; font-size: 1.8rem; }
-  .mission p, .why p { max-width: 760px; font-size: 1.05rem; color: #444; }
-  .why { background: var(--light); }
+  /* --- CONTENT SECTIONS --- */
+  .mission { padding: 80px 0; text-align: center; }
+  .mission h2 { color: var(--primary); margin-bottom: 20px; font-size: 2.2rem; }
+  .mission p { max-width: 800px; margin: 0 auto; font-size: 1.15rem; color: #444; line-height: 1.7; }
+  
+  .why { padding: 80px 0; background: var(--light); text-align: center; }
+  .why h2 { color: var(--primary); margin-bottom: 20px; font-size: 2.2rem; }
+  .why p { max-width: 800px; margin: 0 auto; font-size: 1.15rem; color: #444; line-height: 1.7; }
 
-  .products { padding: 60px 0; }
-  .products h2 { color: var(--primary); text-align: center; margin-bottom: 40px; font-size: 1.8rem; }
-  .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  /* --- PRODUCTS --- */
+  .products { padding: 80px 0; }
+  .products h2 { color: var(--primary); text-align: center; margin-bottom: 50px; font-size: 2.2rem; }
+  .grid { display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
   .card {
-    background: var(--light); border-radius: 12px; padding: 28px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.06); border-top: 4px solid var(--accent);
+    background: var(--light); border-radius: 16px; padding: 32px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.04); 
+    border: 1px solid var(--border);
+    border-top: 5px solid var(--accent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
+  .card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,.08); }
   .card.olive { border-top-color: var(--olive); }
-  .card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.15rem; }
+  .card h3 { color: var(--primary); margin-bottom: 12px; font-size: 1.3rem; }
   .card p { font-size: .95rem; color: #555; }
 
-  .partners { padding: 60px 0; text-align: center; }
-  .partners h2 { color: var(--primary); margin-bottom: 16px; font-size: 1.8rem; }
-  .partners p { max-width: 700px; margin: 0 auto 30px; color: #555; }
+  /* --- PARTNERS --- */
+  .partners { padding: 80px 0; text-align: center; background: var(--bg); }
+  .partners h2 { color: var(--primary); margin-bottom: 16px; font-size: 2.2rem; }
+  .partners p { max-width: 700px; margin: 0 auto 30px; color: #555; font-size: 1.1rem; }
   .partner-tags { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
   .tag {
-    background: var(--light); border: 1px solid #ddd;
-    padding: 8px 20px; border-radius: 20px; font-size: .9rem; color: #444;
+    background: var(--light); border: 1px solid var(--border);
+    padding: 10px 24px; border-radius: 30px; font-size: .9rem; color: var(--primary);
+    font-weight: 500; box-shadow: 0 2px 5px rgba(0,0,0,0.02);
   }
 
-  .faq { padding: 60px 0; background: var(--light); }
-  .faq h2 { color: var(--primary); text-align: center; margin-bottom: 30px; font-size: 1.8rem; }
-  .faq-item { max-width: 760px; margin: 0 auto 20px; }
-  .faq-item h3 { color: var(--primary); font-size: 1.05rem; margin-bottom: 6px; }
-  .faq-item p { color: #555; font-size: .95rem; }
+  /* --- FAQ --- */
+  .faq { padding: 80px 0; background: var(--light); }
+  .faq h2 { color: var(--primary); text-align: center; margin-bottom: 40px; font-size: 2.2rem; }
+  .faq-item { max-width: 800px; margin: 0 auto 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item h3 { color: var(--primary); font-size: 1.15rem; margin-bottom: 8px; }
+  .faq-item p { color: #555; font-size: 1rem; }
 
-  .contact { padding: 60px 0 80px; }
-  .contact h2 { color: var(--primary); text-align: center; margin-bottom: 20px; font-size: 1.8rem; }
-  .contact-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+  /* --- CONTACT --- */
+  .contact { padding: 80px 0 100px; background: var(--bg); }
+  .contact h2 { color: var(--primary); text-align: center; margin-bottom: 30px; font-size: 2.2rem; }
+  
+  .contact-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
   .contact-ctas a {
-    padding: 12px 24px; border-radius: 24px; text-decoration: none; font-weight: 600; font-size: .95rem;
+    padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: .95rem;
+    transition: opacity 0.2s, transform 0.2s;
   }
+  .contact-ctas a:hover { opacity: 0.9; transform: translateY(-2px); }
   .contact-ctas .inst { background: var(--olive); color: var(--light); }
-  .contact-ctas .indiv { background: var(--accent); color: var(--text); }
-  .chat-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
-  .chat-btn { padding: 12px 24px; border-radius: 24px; text-decoration: none; font-weight: 600; font-size: .95rem; color: var(--light); }
+  .contact-ctas .indiv { background: var(--accent); color: #111; }
+  
+  .chat-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+  .chat-btn { padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: .95rem; color: var(--light); transition: transform 0.2s; }
+  .chat-btn:hover { transform: translateY(-2px); }
   .chat-btn.telegram { background: #1d8fcf; }
   .chat-btn.whatsapp { background: #1a9d4f; }
+  
   .form-status { text-align: center; margin-top: 14px; font-weight: 600; color: var(--primary); display: none; }
   .form-status.visible { display: block; }
   .form-status.error { color: #b3261e; }
-  form { max-width: 520px; margin: 0 auto; display: grid; gap: 16px; }
-  label { font-size: .85rem; color: #555; font-weight: 600; margin-bottom: -10px; }
+  
+  form { max-width: 560px; margin: 0 auto; display: grid; gap: 16px; background: var(--light); padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+  label { font-size: .9rem; color: var(--text); font-weight: 600; margin-bottom: -8px; }
   input, textarea {
-    padding: 14px; border: 1px solid #ccc; border-radius: 8px;
-    font-size: 1rem; font-family: inherit; width: 100%;
+    padding: 14px; border: 1px solid var(--border); border-radius: ተ8px;
+    font-size: 1rem; font-family:ና inherit; width: 100%; background: var(--bg);
+    transition: border-color 0.2s;
   }
+  input:focus, textarea:focus { outline: none; border-color: var(--primary); }
   textarea { min-height: 120px; resize: vertical; }
   button {
-    padding: 14px; background: var(--primary); color: var(--light);
+    padding: 16px; background: var(--primary); color: var(--light);
     border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;
+    transition: background 0.2s, transform 0.2s; margin-top: 10px;
   }
-  button:hover { background: #14453a; }
+  button:hover { background: #0a4036; transform: translateY(-2px); }
   .privacy-note { font-size: .8rem; color: #888; text-align: center; margin-top: 10px; }
-  .email-alt { text-align: center; margin-top: 20px; color: #555; }
-  .phone-line { text-align: center; margin-top: 8px; color: #555; }
-  .phone-line a, .email-alt a { color: var(--primary); text-decoration: none; }
+  .email-alt { text-align: center; margin-top: 30px; color: #555; }
+  .phone-line { text-align: center; margin-top: 10px; color: #555; }
+  .email-alt a, .phone-line a { color: var(--primary); font-weight: 600; text-decoration: underline; }
 
-  footer { background: var(--primary); color: var(--light); text-align: center; padding: 24px 0; font-size: .9rem; }
+  /* --- FOOTER --- */
+  footer { background: var(--primary); color: var(--light); text-align: center; padding: 40px 0 20px; font-size: .9rem; }
+  
+  /* --- RESPONSIVE DESIGN --- */
+  @media (max-width: 850px) {
+    header .container { flex-direction: column; text-align: center; gap: 40px; }
+    .hero-text { text-align: center; }
+    header p { margin: 0 auto 30px; }
+    .hero-image { width: 80%; margin: 0 auto; }
+  }
+  @media (max-width: 600px) {
+    nav .container { justify-content: center; }
+    .nav-right { justify-content: center; width: 100%; margin-top: 10px; }
+    nav ul { display: none; }
+    form { padding: 24px; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="container">
-    <a href="#" class="logo">Etaleme Solutions</a>
+    <a href="#" class="brand">
+      <!-- Added classes to the SVG paths for the hover animation -->
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="50" fill="#5B6F3A"/>
+        <path class="logo-drop" d="M50 22 C50 22 33 45 33 57 C33 65.5 40.5 72 50 72 C59.5 72 67 65.5 67 57 C67 45 50 22 50 22Z" fill="#E8A23A"/>
+        <path class="logo-leaf" d="M24 64 C35 76 65 76 76 64 C65 71 35 71 24 64Z" fill="#0F5D4E"/>
+      </svg>
+      <span class="brand-text">Etaleme Solutions</span>
+    </a>
+    
     <div class="nav-right">
       <ul>
-        <li><a href="#mission" data-en="Our Mission" data-am="የእኛ ተልዕኮ" data-om="Ergama Keenya">Our Mission</a></li>
-        <li><a href="#products" data-en="Products" data-am="ዕቃዎች" data-om="Oomishaalee">Products</a></li>
-        <li><a href="#faq" data-en="FAQ" data-am="ተደጋጋሚ ጥያቄዎች" data-om="Gaaffilee Yeroo Baay'ee Gaafataman">FAQ</a></li>
-        <li><a href="#partners" data-en="Partners" data-am="አጋሮች" data-om="Michoottan">Partners</a></li>
-        <li><a href="#contact" data-en="Contact" data-am="ያግኙን" data-om="Nu Qunnamaa">Contact</a></li>
+        <li><a href="#mission" class="nav-link" data-en="Our Mission" data-am="የእኛ ተልዕኮ" data-om="Ergama Keenya">Our Mission</a></li>
+        <li><a href="#products" class="nav-link" data-en="Products" data-am="ዕቃዎች" data-om="Oomishaalee">Products</a></li>
+        <li><a href="#faq" class="nav-link" data-en="FAQ" data-am="ተደጋጋሚ ጥያቄዎች" data-om="Gaaffilee">FAQ</a></li>
+        <li><a href="#partners" class="nav-link" data-en="Partners" data-am="አጋሮች" data-om="Michoottan">Partners</a></li>
+        <li><a href="#contact" class="nav-link" data-en="Contact" data-am="ያግኙን" data-om="Nu Qunnamaa">Contact</a></li>
       </ul>
       <div class="lang-group" id="langGroup" role="group" aria-label="Language selection">
         <button class="lang-btn" data-lang="en" aria-label="Switch to English" aria-pressed="true">EN</button>
@@ -152,28 +259,32 @@
   </div>
 </nav>
 
+<!-- Added class="reveal" to the container for the scroll effect -->
 <header>
-  <div class="wave-bg" aria-hidden="true">
-    <svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,120 C240,200 480,40 720,100 C960,160 1200,60 1440,110 L1440,220 L0,220 Z" fill="var(--olive)" opacity="0.18"></path>
-      <path d="M0,150 C240,90 480,190 720,140 C960,90 1200,170 1440,140 L1440,220 L0,220 Z" fill="var(--primary)" opacity="0.15"></path>
-    </svg>
-  </div>
-  <div class="container">
-    <h1 data-en="Etaleme Solutions — Reusable body care, made with dignity."
-        data-am="እታለሜ ሶሉሽንስ — በክብር የተመሠረተ ዳግም የሚያገለግል የሰውነት እንክብካቤ።"
-        data-om="Etaleme Solutions — Kunuunsa qaamaa deebi'ee itti fayyadamamu, ulfinaan hojjetame.">Etaleme Solutions — Reusable body care, made with dignity.</h1>
-    <p data-en="Affordable, skin-friendly, reusable alternatives for mothers, fistula patients, nursing mothers, active adults, and women across Addis Ababa and Sheger City."
-       data-am="በአዲስ አበባና በሸገር ከተማ ለእናቶች፣ ለፊስቱላ ታካሚዎች፣ ለጡት አጥባቢ እናቶች፣ ለንቁ አዋቂዎች እና ለሴቶች ተመጣጣኝ፣ ለቆዳ ተስማሚ እና ዳግም የሚውሉ አማራጮች።"
-       data-om="Addis Ababaa fi Magaalaa Shaggar keessatti haadhotaaf, dhukkubsattoota fistulaaf, haadhota harma hoosisaniif, namoota jajjaboo fi dubartootaaf filannoo gatii madaalawaa, gogaaf mijataa fi deebi'anii itti fayyadamamu.">Affordable, skin-friendly, reusable alternatives for mothers, fistula patients, nursing mothers, active adults, and women across Addis Ababa and Sheger City.</p>
-    <a href="#contact" class="cta" data-en="Get in Touch" data-am="ያግኙን" data-om="Nu Qunnamaa">Get in Touch</a>
-    <div>
-      <span class="status-line" data-en="Launching soon — join our early-access list" data-am="በቅርቡ ይጀምራል — ቀድሞ ተጠቃሚ ይሁኑ" data-om="Dhiyootti ni jalqabna — tarreeffama dursaa keessatti makamaa">Launching soon — join our early-access list</span>
+  <div class="container reveal">
+    <div class="hero-text">
+      <h1 data-en="Reusable body care, made with dignity."
+          data-am="በክብር የተመሠረተ ዳግም የሚያገለግል የሰውነት እንክብካቤ።"
+          data-om="Kunuunsa qaamaa deebi'ee itti fayyadamamu, ulfinaan hojjetame.">Reusable body care, made with dignity.</h1>
+      <p data-en="Affordable, skin-friendly, reusable alternatives for mothers, fistula patients, nursing mothers, active adults, and women across Addis Ababa and Sheger City."
+         data-am="በአዲስ አበባና በሸገር ከተማ ለእናቶች፣ ለፊስቱላ ታካሚዎች፣ ለጡት አጥባቢ እናቶች፣ ለንቁ አዋቂዎች እና ለሴቶች ተመጣጣኝ፣ ለቆዳ ተስማሚ እና ዳግም የሚውሉ አማራጮች።"
+         data-om="Addis Ababaa fi Magaalaa Shaggar keessatti haadhotaaf, dhukkubsattoota fistulaaf, haadhota harma hoosisaniif, namoota jajjaboo fi dubartootaaf filannoo gatii madaalawaa, gogaaf mijataa fi deebi'anii itti fayyadamamu.">Affordable, skin-friendly, reusable alternatives for mothers, fistula patients, nursing mothers, active adults, and women across Addis Ababa and Sheger City.</p>
+      
+      <a href="#contact" class="cta" data-en="Get in Touch" data-am="ያግኙን" data-om="Nu Qunnamaa">Get in Touch</a>
+      <div>
+        <span class="status-line" data-en="Launching soon — join our early-access list" data-am="በቅርቡ ይጀምራል — ቀድሞ ተጠቃሚ ይሁኑ" data-om="Dhiyootti ni jalqabna — tarreeffama dursaa keessatti makamaa">Launching soon — join our early-access list</span>
+      </div>
+    </div>
+    
+    <div class="hero-image">
+      <!-- REPLACE THE SRC LINK BELOW WITH YOUR ACTUAL 3D IMAGE -->
+      <img src="https://via.placeholder.com/500x500/5B6F3A/E8A23A?text=Your+3D+Hand+Image" alt="Hand shaped like a leaf holding a glowing amber drop">
     </div>
   </div>
 </header>
 
-<section class="mission" id="mission">
+<!-- Added class="reveal" to sections -->
+<section class="mission reveal" id="mission">
   <div class="container">
     <h2 data-en="Our Mission" data-am="የእኛ ተልዕኮ" data-om="Ergama Keenya">Our Mission</h2>
     <p data-en="Etaleme Solutions exists to solve real problems — the recurring cost of disposables, skin irritation from chemical exposure, the loss of dignity for fistula patients, and the environmental burden of single-use products. We provide affordable, skin-friendly, reusable alternatives that protect health, restore dignity, and reduce waste."
@@ -182,16 +293,16 @@
   </div>
 </section>
 
-<section class="why" id="why">
+<section class="why reveal" id="why">
   <div class="container">
     <h2 data-en="Why Reusable?" data-am="ለምን ዳግም የሚያገለግል?" data-om="Maaliif Deebi'anii Itti Fayyadamamu?">Why Reusable?</h2>
     <p data-en="Disposable products add up — financially and environmentally. A reusable pad or pair of shorts is washed and used again, cutting the ongoing cost to households and reducing the waste that single-use products leave behind. For patients managing fistula or heavy postpartum flow, reusable design also means not running out at the wrong moment."
-       data-am="የአንድ ጊዜ መገልገያ ዕቃዎች ወጪያቸው ይጨምራል — በገንዘብም በአካባቢም። ዳግም የሚያገለግል ጨርቅ ወይም ቁምጣ ታጥቦ ደጋግሞ ስለሚያገለግል ለቤተሰብ ያለማቋረጥ ወጪን ይቀንሳል እንዲሁም የአንድ ጊዜ መገልገያ ዕቃዎች የሚተዉትን ቆሻሻ ይቀንሳል። ፊስቱላን ወይም ከፍተኛ የወሊድ በኋላ ፍሰትን ለሚያስተናግዱ ታካሚዎች፣ ዳግም የሚያገለግል ንድፍ በተሳሳተ ሰዓት እንዳያልቅባቸው ያግዛል።"
+       data-am="የአንድ ጊዜ መገልገያ ዕቃዎች ወጪያቸው ይጨምራል — በገንዘብም በአካባቢም። ዳግም የሚያገለግል ጨርቅ ወይም ቁምጣ ታጥቦ ደጋግሞ ስለሚያገለግል ለቤተሰብ ያለማቋረጥ ወጪን ይቀንሳል እንዲሁም የአንድ ጊዜ መገልገያ ዕቃዎች የሚተዉትን ቆሻሻ ይቀንሳል። ፊስቱላን ወይም ከፍተኛ የወሊድ በኋላ ፍሰትን ለሚያስግዱ ታካሚዎች፣ ዳግም የሚያገለግል ንድፍ በተሳሳተ ሰዓት እንዳያልቅባቸው ያግዛል።"
        data-om="Meeshaaleen yeroo tokkoof oolan baasii guddaa fida — maallaqaanis ta'e naannoodhaan. Bastrii ykn sureeffaa deebi'anii itti fayyadaman dhiqamanii irra deddeebi'anii waan fayyadamaniif, baasii maatiif yeroo hunda jiru ni xiqqeessu, xuriin meeshaalee yeroo tokkoof oolan hambisanis ni hir'isu. Dhukkubsattoota fistulaa ykn dhangala'aa da'umsaa booda guddaa qabaniif, dizaayinni deebi'anii itti fayyadamuu yeroo sirrii hin taaneen akka hin dhumne gargaara.">Disposable products add up — financially and environmentally. A reusable pad or pair of shorts is washed and used again, cutting the ongoing cost to households and reducing the waste that single-use products leave behind. For patients managing fistula or heavy postpartum flow, reusable design also means not running out at the wrong moment.</p>
   </div>
 </section>
 
-<section class="products" id="products">
+<section class="products reveal" id="products">
   <div class="container">
     <h2 data-en="Our Products" data-am="የእኛ ዕቃዎች" data-om="Oomishaalee Keenya">Our Products</h2>
        <div class="grid">
@@ -229,7 +340,7 @@
   </div>
 </section>
 
-<section class="faq" id="faq">
+<section class="faq reveal" id="faq">
   <div class="container">
     <h2 data-en="Frequently Asked Questions" data-am="ተደጋጋሚ ጥያቄዎች" data-om="Gaaffilee Yeroo Baay'ee Gaafataman">Frequently Asked Questions</h2>
     <div class="faq-item">
@@ -259,7 +370,7 @@
   </div>
 </section>
 
-<section class="partners" id="partners">
+<section class="partners reveal" id="partners">
   <div class="container">
     <h2 data-en="Who We Serve" data-am="እነማንን እናገለግላለን" data-om="Eenyuuf Tajaajilla">Who We Serve</h2>
     <p data-en="We aim to reach the women who need these products most through local retailers and through institutions that serve them."
@@ -276,19 +387,22 @@
   </div>
 </section>
 
-<section class="contact" id="contact">
+<section class="contact reveal" id="contact">
   <div class="container">
     <h2 data-en="Contact Us" data-am="ያግኙን" data-om="Nu Qunnamaa">Contact Us</h2>
+    
     <div class="contact-ctas">
       <a href="#contactForm" class="inst" data-en="For Clinics & Organizations" data-am="ለክሊኒኮችና ድርጅቶች" data-om="Kiliinikaalee fi Dhaabbilleef">For Clinics & Organizations</a>
       <a href="#contactForm" class="indiv" data-en="For You" data-am="ለእርስዎ" data-om="Siif">For You</a>
     </div>
+    
     <div class="chat-ctas" id="chatCtas">
       <a href="#" id="telegramBtn" class="chat-btn telegram" target="_blank" rel="noopener"
          data-en="Message us on Telegram" data-am="በቴሌግራም መልእክት ይላኩልን" data-om="Telegramiin nuuf barreessaa">Message us on Telegram</a>
       <a href="#" id="whatsappBtn" class="chat-btn whatsapp" target="_blank" rel="noopener"
          data-en="Message us on WhatsApp" data-am="በዋትስአፕ መልእክት ይላኩልን" data-om="WhatsAppiin nuuf barreessaa">Message us on WhatsApp</a>
     </div>
+    
     <form id="contactForm">
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
       <label for="nameInput" data-en="Your name" data-am="ስምዎ" data-om="Maqaa Keessan">Your name</label>
@@ -306,6 +420,7 @@
          data-om="Odeeffannoo kana deebii isiniif kennuuf qofa itti fayyadamna — gara namoota sadaffaatti hin daddabarfamu.">We only use this information to respond to you — it is not shared with third parties.</p>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
+    
     <p class="email-alt" id="emailLine"><span data-en="Or email us directly at" data-am="ወይም በቀጥታ ወደዚህ ኢሜይል ይላኩን" data-om="Yookiin kallattiin imeelii kanaan nu qunnamaa">Or email us directly at</span> <strong><a id="emailLink" href="mailto:info@etaleme.com">info@etaleme.com</a></strong></p>
     <p class="phone-line" id="phoneLine"><span data-en="Call or message us on Telegram:" data-am="ይደውሉልን ወይም በቴሌግራም ያግኙን፦" data-om="Bilbilaa ykn Telegramiin nu qunnamaa:">Call or message us on Telegram:</span> <strong><a id="phoneLink" href="tel:+2519XXXXXXXX">+251 9XX XXX XXX</a></strong></p>
   </div>
@@ -321,44 +436,36 @@
 
 <script>
   // ==================== SETTINGS ====================
-  // Edit these values to configure the site — nothing else needs changing.
-
-  // Enable/disable each language toggle independently.
-  // true = selectable on the site, false = hidden entirely.
   const AMHARIC_ENABLED = true;
   const OROMO_ENABLED   = true;
-  // English is always enabled and is the fallback language.
 
-  // Your contact details (shown in the Contact section)
-  const CONTACT_EMAIL = 'etalemesolutions@gmail.com';     // ← replace with your real email
-  const CONTACT_PHONE_DISPLAY = '+251 723581334'; // ← shown to visitors
-  const CONTACT_PHONE_TEL     = '+251723581334';    // ← used in the tel: link, digits only after +
-
-  // Show the phone line?  true = yes, false = hide it
+  const CONTACT_EMAIL = 'etalemesolutions@gmail.com';     
+  const CONTACT_PHONE_DISPLAY = '+251 723581334'; 
+  const CONTACT_PHONE_TEL     = '+251723581334';    
   const SHOW_PHONE = false;
 
-  // Contact form (Formspree). Submissions are emailed to the address set up in your Formspree account.
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdeajvzr';
 
-  // Instant-chat buttons. Both are OFF until you add your real details.
-  // Fill in the username/number, then change false to true.
   const SHOW_TELEGRAM   = true;
-  const TELEGRAM_USERNAME = 'Malefyae';   // without the @
+  const TELEGRAM_USERNAME = 'Malefyae';   
   const SHOW_WHATSAPP   = true;
-  const WHATSAPP_NUMBER = '251723581334';               // digits only: country code + number, no + or spaces
+  const WHATSAPP_NUMBER = '251723581334';               
   const WHATSAPP_GREETING = "Hello, I'd like to know more about Etaleme's products.";
   // ==================================================
 
-  const phoneTextByLang = {
-    en: 'Call or message us on Telegram:',
-    am: 'ይደውሉልን ወይም በቴሌግራም ያግኙን፦',
-    om: 'Bilbilaa ykn Telegramiin nu qunnamaa:'
-  };
-  const emailTextByLang = {
-    en: 'Or email us directly at',
-    am: 'ወይም በቀጥታ ወደዚህ ኢሜይል ይላኩን',
-    om: 'Yookiin kallattiin imeelii kanaan nu qunnamaa'
-  };
+  // ==================== SCROLL ANIMATIONS ====================
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach((el) => {
+    observer.observe(el);
+  });
+  // ==================================================
 
   let currentLang = 'en';
 
@@ -384,7 +491,6 @@
     btn.addEventListener('click', () => applyLang(btn.dataset.lang));
   });
 
-  // Hide disabled language buttons
   if (!AMHARIC_ENABLED) {
     document.querySelector('.lang-btn[data-lang="am"]').style.display = 'none';
   }
@@ -392,8 +498,6 @@
     document.querySelector('.lang-btn[data-lang="om"]').style.display = 'none';
   }
 
-  // Apply contact settings (email/phone are in their own untranslated spans/links,
-  // so the language switch no longer wipes them out)
   document.getElementById('emailLink').textContent = CONTACT_EMAIL;
   document.getElementById('emailLink').href = 'mailto:' + CONTACT_EMAIL;
 
@@ -405,7 +509,6 @@
     document.getElementById('phoneLink').href = 'tel:' + CONTACT_PHONE_TEL;
   }
 
-  // Instant-chat buttons
   const telegramBtn = document.getElementById('telegramBtn');
   const whatsappBtn = document.getElementById('whatsappBtn');
   telegramBtn.href = 'https://t.me/' + TELEGRAM_USERNAME;
@@ -414,7 +517,6 @@
   if (!SHOW_WHATSAPP) whatsappBtn.style.display = 'none';
   if (!SHOW_TELEGRAM && !SHOW_WHATSAPP) document.getElementById('chatCtas').style.display = 'none';
 
-  // Contact form: sends in the background via Formspree and shows a message on the page
   const formMessages = {
     sending: { en: 'Sending…', am: 'በመላክ ላይ…', om: 'Ergaa jira…' },
     sent:    { en: "Message sent — thank you! We'll get back to you soon.",
