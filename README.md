@@ -278,7 +278,7 @@
     
     <div class="hero-image">
       <!-- REPLACE THE SRC LINK BELOW WITH YOUR ACTUAL 3D IMAGE -->
-      <img src="https://via.placeholder.com/500x500/5B6F3A/E8A23A?text=Your+3D+Hand+Image" alt="Hand shaped like a leaf holding a glowing amber drop">
+      <img src="IMG_3961.jpeg">
     </div>
   </div>
 </header>
