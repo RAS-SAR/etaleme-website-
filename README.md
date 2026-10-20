@@ -278,7 +278,7 @@
     
     <div class="hero-image">
       <!-- REPLACE THE SRC LINK BELOW WITH YOUR ACTUAL 3D IMAGE -->
-      <img src="IMG_3961.jpeg">
+      <img src="IMG_3961.jpeg" "alt="Hand shaped like a leaf holding a glowing amber drop"">
     </div>
   </div>
 </header>
