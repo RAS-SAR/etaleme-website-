@@ -1,4 +1,4 @@
-[etaleme’S_website.html](https://github.com/user-attachments/files/33763939/etaleme.S_website.html)
+[etaleme website v4.html](https://github.com/user-attachments/files/33781040/etaleme.website.v4.html)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Etaleme Solutions — Reusable Body Care, Made with Dignity</title>
 <meta name="description" content="Affordable, skin-friendly, reusable body care alternatives for mothers, fistula patients, nursing mothers, and women across Addis Ababa and Sheger City.">
+<script>document.documentElement.classList.add('js');</script>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Etaleme Solutions — Reusable Body Care, Made with Dignity">
+<meta property="og:description" content="Affordable, skin-friendly, reusable body care alternatives for mothers, fistula patients, nursing mothers, and women across Addis Ababa and Sheger City.">
+<!-- For a share picture, add: <meta property="og:image" content="https://YOUR-FULL-SITE-URL/hero.jpg"> (must be a full URL) -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%236b7a3a'/%3E%3Cpath d='M100 46 C112 64 120 78 120 90 C120 102 111 110 100 110 C89 110 80 102 80 90 C80 78 88 64 100 46 Z' fill='%23e8a13c'/%3E%3Cpath d='M42 112 C55 157 145 157 158 112 C140 132 60 132 42 112 Z' fill='%231a5c4a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,14 +40,17 @@
   section { scroll-margin-top: 90px; padding: 80px 0; }
 
   /* --- ANIMATIONS & EFFECTS --- */
-  .reveal {
+  .js .reveal {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   }
-  .reveal.active {
+  .js .reveal.active {
     opacity: 1;
     transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal { opacity: 1; transform: none; transition: none; }
   }
 
   .logo-drop {
@@ -84,6 +92,13 @@
   }
   .lang-btn[aria-pressed="true"] { background: var(--primary); color: var(--light); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
+  /* --- INTRO VIDEO --- */
+  .video-hero { position: relative; height: 60vh; max-height: 520px; min-height: 280px; background: var(--primary); overflow: hidden; }
+  .video-hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .video-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(15,93,78,.65) 100%); }
+  .video-text { position: absolute; z-index: 1; left: 0; right: 0; bottom: 8%; text-align: center; padding: 0 20px; color: #fff;
+    font-family: 'Lora', 'Noto Sans Ethiopic', serif; font-weight: 600; font-size: clamp(1.4rem, 4.5vw, 2.6rem); line-height: 1.25; text-shadow: 0 2px 12px rgba(0,0,0,.4); }
+
   /* --- HERO SECTION --- */
   header {
     padding: 80px 0 100px;
@@ -99,8 +114,11 @@
   header p { font-size: 1.15rem; color: #444; margin-bottom: 30px; max-width: 600px; }
 
   .hero-image img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
     border-radius: 50%;
     box-shadow: 0 20px 40px rgba(15, 93, 78, 0.15);
     border: 4px solid rgba(255,255,255,0.5);
@@ -184,6 +202,7 @@
   .chat-btn:hover { transform: translateY(-2px); }
   .chat-btn.telegram { background: #1d8fcf; }
   .chat-btn.whatsapp { background: #1a9d4f; }
+  .chat-btn.call { background: var(--primary); }
 
   .form-status { text-align: center; margin-top: 14px; font-weight: 600; color: var(--primary); display: none; }
   .form-status.visible { display: block; }
@@ -217,12 +236,17 @@
     header .container { flex-direction: column; text-align: center; gap: 40px; }
     .hero-text { text-align: center; }
     header p { margin: 0 auto 30px; }
+    .hero-text, .hero-image { flex: none; }
     .hero-image { width: 80%; margin: 0 auto; }
+    header { padding: 50px 0 60px; }
+    .video-hero { height: 50vh; }
+    section { padding: 60px 0; }
   }
   @media (max-width: 600px) {
     nav .container { justify-content: center; }
     .nav-right { justify-content: center; width: 100%; margin-top: 10px; }
-    nav ul { display: none; }
+    nav ul { width: 100%; justify-content: center; gap: 6px 16px; }
+    nav a.nav-link { font-size: .85rem; }
     form { padding: 24px; }
   }
 </style>
@@ -264,6 +288,17 @@
     </div>
   </div>
 </nav>
+
+<!-- INTRO VIDEO: upload your MP4 next to this file, set HERO_VIDEO in the settings. Hides itself if off or missing. -->
+<section class="video-hero" id="videoHero" style="display:none; padding:0">
+  <video id="heroVideo" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <source id="heroVideoSrc" type="video/mp4">
+  </video>
+  <div class="video-text"
+       data-en="Reusable body care, made with dignity."
+       data-am="በክብር የተመሠረተ ዳግም የሚያገለግል የሰውነት እንክብካቤ።"
+       data-om="Kunuunsa qaamaa deebi'ee itti fayyadamamu, ulfinaan hojjetame.">Reusable body care, made with dignity.</div>
+</section>
 
 <header>
   <div class="container reveal">
@@ -403,6 +438,8 @@
     <div class="chat-ctas" id="chatCtas">
       <a href="#" id="telegramBtn" class="chat-btn telegram" target="_blank" rel="noopener"
          data-en="Message us on Telegram" data-am="በቴሌግራም መልእክት ይላኩልን" data-om="Telegramiin nuuf barreessaa">Message us on Telegram</a>
+      <a href="#" id="callBtn" class="chat-btn call"
+         data-en="Call us" data-am="ይደውሉልን" data-om="Nuuf Bilbilaa">Call us</a>
       <a href="#" id="whatsappBtn" class="chat-btn whatsapp" target="_blank" rel="noopener"
          data-en="Message us on WhatsApp" data-am="በዋትስአፕ መልእክት ይላኩልን" data-om="WhatsAppiin nuuf barreessaa">Message us on WhatsApp</a>
     </div>
@@ -443,13 +480,19 @@
   const AMHARIC_ENABLED = true;
   const OROMO_ENABLED   = true;
 
+  // Intro video (8–13 s loop, MP4, ideally under 5 MB)
+  const SHOW_HERO_VIDEO = true;
+  const HERO_VIDEO = 'intro.mp4';
+  const HERO_VIDEO_POSTER = 'hero.jpg';
+
   // Logo: 'simple' = teardrop + curve   |   'concept5' = leaf cupping a droplet
   const LOGO_STYLE = 'simple';
 
   const CONTACT_EMAIL = 'etalemesolutions@gmail.com';
   const CONTACT_PHONE_DISPLAY = '+251 723581334';
   const CONTACT_PHONE_TEL     = '+251723581334';
-  const SHOW_PHONE = false;
+  const SHOW_PHONE = false;      // shows the number as text
+  const SHOW_CALL_BUTTON = true; // shows a "Call us" button without printing the number
 
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdeajvzr';
 
@@ -460,6 +503,27 @@
   const WHATSAPP_GREETING = "Hello, I'd like to know more about Etaleme's products.";
   // ==================================================
 
+  // ==================== INTRO VIDEO ====================
+  (function () {
+    const box = document.getElementById('videoHero');
+    if (!SHOW_HERO_VIDEO || !HERO_VIDEO) return;
+    const vid = document.getElementById('heroVideo');
+    const src = document.getElementById('heroVideoSrc');
+    vid.poster = HERO_VIDEO_POSTER;
+    src.src = HERO_VIDEO;
+    box.style.display = '';
+    src.addEventListener('error', () => { box.style.display = 'none'; });
+    vid.load();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      vid.removeAttribute('autoplay');
+      vid.pause();
+    } else {
+      const p = vid.play();
+      if (p && p.catch) p.catch(() => {});
+    }
+  })();
+  // ==================================================
+
   // ==================== LOGO SWITCH ====================
   if (LOGO_STYLE === 'concept5') {
     document.getElementById('logoSimple').style.display = 'none';
@@ -468,17 +532,22 @@
   // ==================================================
 
   // ==================== SCROLL ANIMATIONS ====================
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.reveal').forEach((el) => {
-    observer.observe(el);
-  });
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
+    revealEls.forEach((el) => observer.observe(el));
+    // Safety net: never leave content hidden
+    setTimeout(() => revealEls.forEach((el) => el.classList.add('active')), 3000);
+  } else {
+    revealEls.forEach((el) => el.classList.add('active'));
+  }
   // ==================================================
 
   let currentLang = 'en';
@@ -527,9 +596,12 @@
   const whatsappBtn = document.getElementById('whatsappBtn');
   telegramBtn.href = 'https://t.me/' + TELEGRAM_USERNAME;
   whatsappBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(WHATSAPP_GREETING);
+  const callBtn = document.getElementById('callBtn');
+  callBtn.href = 'tel:' + CONTACT_PHONE_TEL;
+  if (!SHOW_CALL_BUTTON) callBtn.style.display = 'none';
   if (!SHOW_TELEGRAM) telegramBtn.style.display = 'none';
   if (!SHOW_WHATSAPP) whatsappBtn.style.display = 'none';
-  if (!SHOW_TELEGRAM && !SHOW_WHATSAPP) document.getElementById('chatCtas').style.display = 'none';
+  if (!SHOW_TELEGRAM && !SHOW_WHATSAPP && !SHOW_CALL_BUTTON) document.getElementById('chatCtas').style.display = 'none';
 
   const formMessages = {
     sending: { en: 'Sending…', am: 'በመላክ ላይ…', om: 'Ergaa jira…' },
