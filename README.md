@@ -1,4 +1,3 @@
-(https://github.com/user-attachments/files/33781614/etaleme.website.v4.html)
 <!DOCTYPE html>
 <html lang="en">
 <head>
