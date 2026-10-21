@@ -5,15 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Etaleme Solutions — Reusable Body Care, Made with Dignity</title>
 <meta name="description" content="Affordable, skin-friendly, reusable body care alternatives for mothers, fistula patients, nursing mothers, and women across Addis Ababa and Sheger City.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%236b7a3a'/%3E%3Cpath d='M100 46 C112 64 120 78 120 90 C120 102 111 110 100 110 C89 110 80 102 80 90 C80 78 88 64 100 46 Z' fill='%23e8a13c'/%3E%3Cpath d='M42 112 C55 157 145 157 158 112 C140 132 60 132 42 112 Z' fill='%231a5c4a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,500;0,600;1,400&family=Noto+Sans+Ethiopic:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #0F5D4E; 
-    --accent:  #E8A23A; 
-    --olive:   #5B6F3A; 
-    --bg:      #F4EDE2; 
+    --primary: #0F5D4E;
+    --accent:  #E8A23A;
+    --olive:   #5B6F3A;
+    --bg:      #F4EDE2;
     --text:    #2b2b2b;
     --light:   #ffffff;
     --border:  #e0dcd3;
@@ -33,7 +34,6 @@
   section { scroll-margin-top: 90px; padding: 80px 0; }
 
   /* --- ANIMATIONS & EFFECTS --- */
-  /* Scroll Reveal */
   .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -44,7 +44,6 @@
     transform: translateY(0);
   }
 
-  /* Logo Drop Bounce on Hover */
   .logo-drop {
     transition: transform 0.3s ease;
     transform-origin: center bottom;
@@ -56,27 +55,26 @@
     0% { transform: translateY(0); }
     100% { transform: translateY(-6px); }
   }
-  /* --------------------------- */
 
   /* --- NAVIGATION --- */
   nav {
-    background: rgba(255, 255, 255, 0.95); 
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     padding: 12px 0;
     box-shadow: 0 2px 10px rgba(0,0,0,.05);
     position: sticky; top: 0; z-index: 100;
   }
   nav .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-  
+
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
   .brand svg { width: 42px; height: 42px; }
   .brand-text { font-family: 'Lora', serif; font-weight: 600; color: var(--primary); font-size: 1.3rem; letter-spacing: -0.5px; }
-  
+
   .nav-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
   nav ul { list-style: none; display: flex; gap: 24px; flex-wrap: wrap; }
   nav a.nav-link { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
   nav a.nav-link:hover { color: var(--primary); }
-  
+
   .lang-group { display: flex; gap: 4px; background: #eee; padding: 4px; border-radius: 20px; }
   .lang-btn {
     background: transparent; color: var(--text); border: none;
@@ -86,27 +84,27 @@
   .lang-btn[aria-pressed="true"] { background: var(--primary); color: var(--light); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
   /* --- HERO SECTION --- */
-  header { 
-    padding: 80px 0 100px; 
-    position: relative; 
-    overflow: hidden; 
+  header {
+    padding: 80px 0 100px;
+    position: relative;
+    overflow: hidden;
     background: linear-gradient(180deg, #EBE5D9 0%, var(--bg) 100%);
   }
   header .container { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 50px; }
   .hero-text { flex: 1.2; text-align: left; }
   .hero-image { flex: 0.8; display: flex; justify-content: center; position: relative; }
-  
+
   header h1 { font-size: clamp(2rem, 4vw, 3.2rem); color: var(--primary); margin-bottom: 20px; line-height: 1.2; }
   header p { font-size: 1.15rem; color: #444; margin-bottom: 30px; max-width: 600px; }
-  
-  .hero-image img { 
-    max-width: 100%; 
-    height: auto; 
-    border-radius: 50%; 
-    box-shadow: 0 20px 40px rgba(15, 93, 78, 0.15); 
+
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 20px 40px rgba(15, 93, 78, 0.15);
     border: 4px solid rgba(255,255,255,0.5);
   }
-  
+
   .cta {
     display: inline-block; padding: 14px 32px;
     background: var(--accent); color: #111;
@@ -118,7 +116,7 @@
 
   .status-line {
     display: inline-block; margin-top: 20px; padding: 8px 16px;
-    background: rgba(91, 111, 58, 0.1); color: var(--olive); 
+    background: rgba(91, 111, 58, 0.1); color: var(--olive);
     border-radius: 20px; font-size: .85rem; font-weight: 600;
     border: 1px solid rgba(91, 111, 58, 0.2);
   }
@@ -127,7 +125,7 @@
   .mission { padding: 80px 0; text-align: center; }
   .mission h2 { color: var(--primary); margin-bottom: 20px; font-size: 2.2rem; }
   .mission p { max-width: 800px; margin: 0 auto; font-size: 1.15rem; color: #444; line-height: 1.7; }
-  
+
   .why { padding: 80px 0; background: var(--light); text-align: center; }
   .why h2 { color: var(--primary); margin-bottom: 20px; font-size: 2.2rem; }
   .why p { max-width: 800px; margin: 0 auto; font-size: 1.15rem; color: #444; line-height: 1.7; }
@@ -138,7 +136,7 @@
   .grid { display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
   .card {
     background: var(--light); border-radius: 16px; padding: 32px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.04); 
+    box-shadow: 0 10px 30px rgba(0,0,0,.04);
     border: 1px solid var(--border);
     border-top: 5px solid var(--accent);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -170,7 +168,7 @@
   /* --- CONTACT --- */
   .contact { padding: 80px 0 100px; background: var(--bg); }
   .contact h2 { color: var(--primary); text-align: center; margin-bottom: 30px; font-size: 2.2rem; }
-  
+
   .contact-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
   .contact-ctas a {
     padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: .95rem;
@@ -179,32 +177,32 @@
   .contact-ctas a:hover { opacity: 0.9; transform: translateY(-2px); }
   .contact-ctas .inst { background: var(--olive); color: var(--light); }
   .contact-ctas .indiv { background: var(--accent); color: #111; }
-  
+
   .chat-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
   .chat-btn { padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: .95rem; color: var(--light); transition: transform 0.2s; }
   .chat-btn:hover { transform: translateY(-2px); }
   .chat-btn.telegram { background: #1d8fcf; }
   .chat-btn.whatsapp { background: #1a9d4f; }
-  
+
   .form-status { text-align: center; margin-top: 14px; font-weight: 600; color: var(--primary); display: none; }
   .form-status.visible { display: block; }
   .form-status.error { color: #b3261e; }
-  
+
   form { max-width: 560px; margin: 0 auto; display: grid; gap: 16px; background: var(--light); padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
   label { font-size: .9rem; color: var(--text); font-weight: 600; margin-bottom: -8px; }
   input, textarea {
-    padding: 14px; border: 1px solid var(--border); border-radius: ተ8px;
-    font-size: 1rem; font-family:ና inherit; width: 100%; background: var(--bg);
+    padding: 14px; border: 1px solid var(--border); border-radius: 8px;
+    font-size: 1rem; font-family: inherit; width: 100%; background: var(--bg);
     transition: border-color 0.2s;
   }
   input:focus, textarea:focus { outline: none; border-color: var(--primary); }
   textarea { min-height: 120px; resize: vertical; }
-  button {
+  form button {
     padding: 16px; background: var(--primary); color: var(--light);
     border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;
     transition: background 0.2s, transform 0.2s; margin-top: 10px;
   }
-  button:hover { background: #0a4036; transform: translateY(-2px); }
+  form button:hover { background: #0a4036; transform: translateY(-2px); }
   .privacy-note { font-size: .8rem; color: #888; text-align: center; margin-top: 10px; }
   .email-alt { text-align: center; margin-top: 30px; color: #555; }
   .phone-line { text-align: center; margin-top: 10px; color: #555; }
@@ -212,7 +210,7 @@
 
   /* --- FOOTER --- */
   footer { background: var(--primary); color: var(--light); text-align: center; padding: 40px 0 20px; font-size: .9rem; }
-  
+
   /* --- RESPONSIVE DESIGN --- */
   @media (max-width: 850px) {
     header .container { flex-direction: column; text-align: center; gap: 40px; }
@@ -233,15 +231,22 @@
 <nav>
   <div class="container">
     <a href="#" class="brand">
-      <!-- Added classes to the SVG paths for the hover animation -->
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Logo A: simple teardrop (LOGO_STYLE = 'simple') -->
+      <svg id="logoSimple" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="50" cy="50" r="50" fill="#5B6F3A"/>
         <path class="logo-drop" d="M50 22 C50 22 33 45 33 57 C33 65.5 40.5 72 50 72 C59.5 72 67 65.5 67 57 C67 45 50 22 50 22Z" fill="#E8A23A"/>
         <path class="logo-leaf" d="M24 64 C35 76 65 76 76 64 C65 71 35 71 24 64Z" fill="#0F5D4E"/>
       </svg>
+      <!-- Logo B: leaf cupping a droplet (LOGO_STYLE = 'concept5') -->
+      <svg id="logoConcept5" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none">
+        <circle cx="100" cy="100" r="95" fill="#6b7a3a"/>
+        <path class="logo-drop" d="M100 46 C112 64 120 78 120 90 C120 102 111 110 100 110 C89 110 80 102 80 90 C80 78 88 64 100 46 Z" fill="#e8a13c"/>
+        <path class="logo-leaf" d="M42 112 C55 157 145 157 158 112 C140 132 60 132 42 112 Z" fill="#1a5c4a"/>
+        <path d="M52 117 C72 143 128 143 148 117" stroke="#6b7a3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </svg>
       <span class="brand-text">Etaleme Solutions</span>
     </a>
-    
+
     <div class="nav-right">
       <ul>
         <li><a href="#mission" class="nav-link" data-en="Our Mission" data-am="የእኛ ተልዕኮ" data-om="Ergama Keenya">Our Mission</a></li>
@@ -259,7 +264,6 @@
   </div>
 </nav>
 
-<!-- Added class="reveal" to the container for the scroll effect -->
 <header>
   <div class="container reveal">
     <div class="hero-text">
@@ -269,21 +273,20 @@
       <p data-en="Affordable, skin-friendly, reusable alternatives for mothers, fistula patients, nursing mothers, active adults, and women across Addis Ababa and Sheger City."
          data-am="በአዲስ አበባና በሸገር ከተማ ለእናቶች፣ ለፊስቱላ ታካሚዎች፣ ለጡት አጥባቢ እናቶች፣ ለንቁ አዋቂዎች እና ለሴቶች ተመጣጣኝ፣ ለቆዳ ተስማሚ እና ዳግም የሚውሉ አማራጮች።"
          data-om="Addis Ababaa fi Magaalaa Shaggar keessatti haadhotaaf, dhukkubsattoota fistulaaf, haadhota harma hoosisaniif, namoota jajjaboo fi dubartootaaf filannoo gatii madaalawaa, gogaaf mijataa fi deebi'anii itti fayyadamamu.">Affordable, skin-friendly, reusable alternatives for mothers, fistula patients, nursing mothers, active adults, and women across Addis Ababa and Sheger City.</p>
-      
+
       <a href="#contact" class="cta" data-en="Get in Touch" data-am="ያግኙን" data-om="Nu Qunnamaa">Get in Touch</a>
       <div>
         <span class="status-line" data-en="Launching soon — join our early-access list" data-am="በቅርቡ ይጀምራል — ቀድሞ ተጠቃሚ ይሁኑ" data-om="Dhiyootti ni jalqabna — tarreeffama dursaa keessatti makamaa">Launching soon — join our early-access list</span>
       </div>
     </div>
-    
+
     <div class="hero-image">
-      <!-- REPLACE THE SRC LINK BELOW WITH YOUR ACTUAL 3D IMAGE -->
-      <img src="IMG_3961.jpeg" "alt="Hand shaped like a leaf holding a glowing amber drop"">
+      <!-- CHANGE "hero.jpg" TO YOUR REAL IMAGE FILENAME, AND UPDATE THE alt TEXT TO MATCH THE PICTURE -->
+      <img src="hero.jpg" alt="Etaleme Solutions hero illustration">
     </div>
   </div>
 </header>
 
-<!-- Added class="reveal" to sections -->
 <section class="mission reveal" id="mission">
   <div class="container">
     <h2 data-en="Our Mission" data-am="የእኛ ተልዕኮ" data-om="Ergama Keenya">Our Mission</h2>
@@ -305,7 +308,7 @@
 <section class="products reveal" id="products">
   <div class="container">
     <h2 data-en="Our Products" data-am="የእኛ ዕቃዎች" data-om="Oomishaalee Keenya">Our Products</h2>
-       <div class="grid">
+    <div class="grid">
       <div class="card">
         <h3 data-en="Maternity Pads & Diapers" data-am="የእናቶች የንጽህና ጨርቆች እና ዳይፐሮች" data-om="Baaxii fi Daayipara Haadholii">Maternity Pads & Diapers</h3>
         <p data-en="Reusable, gentle protection designed for comfort and confidence during postpartum recovery."
@@ -390,19 +393,19 @@
 <section class="contact reveal" id="contact">
   <div class="container">
     <h2 data-en="Contact Us" data-am="ያግኙን" data-om="Nu Qunnamaa">Contact Us</h2>
-    
+
     <div class="contact-ctas">
       <a href="#contactForm" class="inst" data-en="For Clinics & Organizations" data-am="ለክሊኒኮችና ድርጅቶች" data-om="Kiliinikaalee fi Dhaabbilleef">For Clinics & Organizations</a>
       <a href="#contactForm" class="indiv" data-en="For You" data-am="ለእርስዎ" data-om="Siif">For You</a>
     </div>
-    
+
     <div class="chat-ctas" id="chatCtas">
       <a href="#" id="telegramBtn" class="chat-btn telegram" target="_blank" rel="noopener"
          data-en="Message us on Telegram" data-am="በቴሌግራም መልእክት ይላኩልን" data-om="Telegramiin nuuf barreessaa">Message us on Telegram</a>
       <a href="#" id="whatsappBtn" class="chat-btn whatsapp" target="_blank" rel="noopener"
          data-en="Message us on WhatsApp" data-am="በዋትስአፕ መልእክት ይላኩልን" data-om="WhatsAppiin nuuf barreessaa">Message us on WhatsApp</a>
     </div>
-    
+
     <form id="contactForm">
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
       <label for="nameInput" data-en="Your name" data-am="ስምዎ" data-om="Maqaa Keessan">Your name</label>
@@ -420,7 +423,7 @@
          data-om="Odeeffannoo kana deebii isiniif kennuuf qofa itti fayyadamna — gara namoota sadaffaatti hin daddabarfamu.">We only use this information to respond to you — it is not shared with third parties.</p>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
-    
+
     <p class="email-alt" id="emailLine"><span data-en="Or email us directly at" data-am="ወይም በቀጥታ ወደዚህ ኢሜይል ይላኩን" data-om="Yookiin kallattiin imeelii kanaan nu qunnamaa">Or email us directly at</span> <strong><a id="emailLink" href="mailto:info@etaleme.com">info@etaleme.com</a></strong></p>
     <p class="phone-line" id="phoneLine"><span data-en="Call or message us on Telegram:" data-am="ይደውሉልን ወይም በቴሌግራም ያግኙን፦" data-om="Bilbilaa ykn Telegramiin nu qunnamaa:">Call or message us on Telegram:</span> <strong><a id="phoneLink" href="tel:+2519XXXXXXXX">+251 9XX XXX XXX</a></strong></p>
   </div>
@@ -439,18 +442,28 @@
   const AMHARIC_ENABLED = true;
   const OROMO_ENABLED   = true;
 
-  const CONTACT_EMAIL = 'etalemesolutions@gmail.com';     
-  const CONTACT_PHONE_DISPLAY = '+251 723581334'; 
-  const CONTACT_PHONE_TEL     = '+251723581334';    
+  // Logo: 'simple' = teardrop + curve   |   'concept5' = leaf cupping a droplet
+  const LOGO_STYLE = 'simple';
+
+  const CONTACT_EMAIL = 'etalemesolutions@gmail.com';
+  const CONTACT_PHONE_DISPLAY = '+251 723581334';
+  const CONTACT_PHONE_TEL     = '+251723581334';
   const SHOW_PHONE = false;
 
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdeajvzr';
 
   const SHOW_TELEGRAM   = true;
-  const TELEGRAM_USERNAME = 'Malefyae';   
+  const TELEGRAM_USERNAME = 'Malefyae';
   const SHOW_WHATSAPP   = true;
-  const WHATSAPP_NUMBER = '251723581334';               
+  const WHATSAPP_NUMBER = '251723581334';
   const WHATSAPP_GREETING = "Hello, I'd like to know more about Etaleme's products.";
+  // ==================================================
+
+  // ==================== LOGO SWITCH ====================
+  if (LOGO_STYLE === 'concept5') {
+    document.getElementById('logoSimple').style.display = 'none';
+    document.getElementById('logoConcept5').style.display = '';
+  }
   // ==================================================
 
   // ==================== SCROLL ANIMATIONS ====================
