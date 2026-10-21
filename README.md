@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Etaleme Solutions — Reusable Body Care, Made with Dignity">
 <meta property="og:description" content="Affordable, skin-friendly, reusable body care alternatives for mothers, fistula patients, nursing mothers, and women across Addis Ababa and Sheger City.">
-<!-- For a share picture, add: <meta property="og:image" content="https://YOUR-FULL-SITE-URL/hero.jpg"> (must be a full URL) -->
+<!-- For a share picture, add: <meta property="og:image" content="https://YOUR-FULL-SITE-URL/hero.svg"> (must be a full URL) -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%236b7a3a'/%3E%3Cpath d='M100 46 C112 64 120 78 120 90 C120 102 111 110 100 110 C89 110 80 102 80 90 C80 78 88 64 100 46 Z' fill='%23e8a13c'/%3E%3Cpath d='M42 112 C55 157 145 157 158 112 C140 132 60 132 42 112 Z' fill='%231a5c4a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -317,8 +317,8 @@
     </div>
 
     <div class="hero-image">
-      <!-- CHANGE "hero.jpg" TO YOUR REAL IMAGE FILENAME, AND UPDATE THE alt TEXT TO MATCH THE PICTURE -->
-      <img src="hero.jpg" alt="Etaleme Solutions hero illustration">
+      <!-- CHANGE "hero.svg" TO YOUR REAL IMAGE FILENAME, AND UPDATE THE alt TEXT TO MATCH THE PICTURE -->
+      <img src="hero.svg" alt="Etaleme Solutions hero illustration">
     </div>
   </div>
 </header>
@@ -483,7 +483,7 @@
   // Intro video (8–13 s loop, MP4, ideally under 5 MB)
   const SHOW_HERO_VIDEO = true;
   const HERO_VIDEO = 'intro.mp4';
-  const HERO_VIDEO_POSTER = 'hero.jpg';
+  const HERO_VIDEO_POSTER = 'hero.svg';
 
   // Logo: 'simple' = teardrop + curve   |   'concept5' = leaf cupping a droplet
   const LOGO_STYLE = 'simple';
