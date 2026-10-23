@@ -92,13 +92,13 @@
   .lang-btn[aria-pressed="true"] { background: var(--primary); color: var(--light); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
   /* --- INTRO VIDEO --- */
-    .video-hero { 
+      .video-hero { 
     position: relative; 
     width: 100%; 
-    height: 60vh; 
-    min-height: 350px; 
-    max-height: 600px; 
-    background: var(--bg); /* This blends it with your cream background */
+    height: 50vh; /* Keeps it a nice, cinematic height on PC */
+    min-height: 300px; 
+    max-height: 500px; 
+    background: var(--primary); 
     overflow: hidden; 
   }
   .video-hero video { 
@@ -107,7 +107,9 @@
     left: 0; 
     width: 100%; 
     height: 100%; 
-    object-fit: contain; /* This stops the video from being cut off on PC */
+    object-fit: cover; 
+    object-position: center 30%; /* This is the magic trick! */
+  }
   }  .video-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(15,93,78,.65) 100%); }
   .video-text { position: absolute; z-index: 1; left: 0; right: 0; bottom: 8%; text-align: center; padding: 0 20px; color: #fff;
     font-family: 'Lora', 'Noto Sans Ethiopic', serif; font-weight: 600; font-size: clamp(1.4rem, 4.5vw, 2.6rem); line-height: 1.25; text-shadow: 0 2px 12px rgba(0,0,0,.4); }
