@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Etaleme Solutions — Reusable Body Care, Made with Dignity</title>
 <meta name="description" content="Affordable, skin-friendly, reusable body care alternatives for mothers, fistula patients, nursing mothers, and women across Addis Ababa and Sheger City.">
 <script>document.documentElement.classList.add('js');</script>
@@ -25,7 +25,7 @@
     --border:  #e0dcd3;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   body {
     font-family: 'Inter', 'Noto Sans Ethiopic', sans-serif;
     color: var(--text); background: var(--bg); line-height: 1.6;
@@ -34,7 +34,7 @@
     font-family: 'Lora', 'Noto Sans Ethiopic', serif;
     font-weight: 600;
   }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 max(20px, env(safe-area-inset-right, 0px)) 0 max(20px, env(safe-area-inset-left, 0px)); }
 
   section { scroll-margin-top: 90px; padding: 80px 0; }
 
@@ -231,7 +231,7 @@
   .email-alt a, .phone-line a { color: var(--primary); font-weight: 600; text-decoration: underline; }
 
   /* --- FOOTER --- */
-  footer { background: var(--primary); color: var(--light); text-align: center; padding: 40px 0 20px; font-size: .9rem; }
+  footer { background: var(--primary); color: var(--light); text-align: center; padding: 40px 0 calc(20px + env(safe-area-inset-bottom, 0px)); font-size: .9rem; }
 
   /* --- RESPONSIVE DESIGN --- */
   @media (max-width: 850px) {
@@ -244,7 +244,7 @@
     .video-hero { height: 50vh; height: 50svh; }
     section { padding: 60px 0; }
   }
-  @media (max-width: 600px) {
+  @media (max-width: 600px), (max-height: 500px) and (orientation: landscape) {
     nav { padding: 8px 0; }
     nav .container { justify-content: space-between; row-gap: 6px; }
     .brand { order: 1; gap: 8px; }
@@ -258,6 +258,20 @@
     nav a.nav-link { font-size: .85rem; }
     section { scroll-margin-top: 110px; }
     form { padding: 24px; }
+  }
+  /* --- PHONE IN LANDSCAPE (short screens) --- */
+  @media (max-height: 500px) and (orientation: landscape) {
+    nav { position: static; }
+    section { scroll-margin-top: 20px; }
+    .video-hero { height: 80vh; height: 80svh; min-height: 0; }
+    header { padding: 30px 0 40px; }
+    header .container { flex-direction: row; text-align: left; gap: 30px; }
+    .hero-text { flex: 1.2; text-align: left; }
+    .hero-image { flex: 0.8; width: auto; margin: 0; }
+    .hero-image img { max-width: 280px; }
+    header p { margin: 0 0 20px; }
+    header h1 { font-size: 1.8rem; margin-bottom: 12px; }
+    section { padding: 40px 0; }
   }
 </style>
 </head>
