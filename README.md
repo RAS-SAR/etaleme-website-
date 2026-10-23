@@ -92,11 +92,14 @@
   .lang-btn[aria-pressed="true"] { background: var(--primary); color: var(--light); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
   /* --- INTRO VIDEO --- */
-  .video-hero { position: relative; height: 60vh; max-height: 520px; min-height: 280px; background: var(--primary); overflow: hidden; }
+  .video-hero { position: relative; height: 60vh; height: 60svh; max-height: 520px; min-height: 280px; background: var(--primary); overflow: hidden; }
   .video-hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .video-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(15,93,78,.65) 100%); }
   .video-text { position: absolute; z-index: 1; left: 0; right: 0; bottom: 8%; text-align: center; padding: 0 20px; color: #fff;
     font-family: 'Lora', 'Noto Sans Ethiopic', serif; font-weight: 600; font-size: clamp(1.4rem, 4.5vw, 2.6rem); line-height: 1.25; text-shadow: 0 2px 12px rgba(0,0,0,.4); }
+
+  .video-toggle { position: absolute; z-index: 2; top: 14px; right: 14px; width: 40px; height: 40px; border: none; border-radius: 50%;
+    background: rgba(0,0,0,.45); color: #fff; font-size: 14px; cursor: pointer; }
 
   /* --- HERO SECTION --- */
   header {
@@ -151,7 +154,7 @@
   /* --- PRODUCTS --- */
   .products { padding: 80px 0; }
   .products h2 { color: var(--primary); text-align: center; margin-bottom: 50px; font-size: 2.2rem; }
-  .grid { display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .grid { display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
   .card {
     background: var(--light); border-radius: 16px; padding: 32px;
     box-shadow: 0 10px 30px rgba(0,0,0,.04);
@@ -159,7 +162,7 @@
     border-top: 5px solid var(--accent);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,.08); }
+  @media (hover: hover) { .card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,.08); } }
   .card.olive { border-top-color: var(--olive); }
   .card h3 { color: var(--primary); margin-bottom: 12px; font-size: 1.3rem; }
   .card p { font-size: .95rem; color: #555; }
@@ -238,14 +241,22 @@
     .hero-text, .hero-image { flex: none; }
     .hero-image { width: 80%; margin: 0 auto; }
     header { padding: 50px 0 60px; }
-    .video-hero { height: 50vh; }
+    .video-hero { height: 50vh; height: 50svh; }
     section { padding: 60px 0; }
   }
   @media (max-width: 600px) {
-    nav .container { justify-content: center; }
-    .nav-right { justify-content: center; width: 100%; margin-top: 10px; }
-    nav ul { width: 100%; justify-content: center; gap: 6px 16px; }
+    nav { padding: 8px 0; }
+    nav .container { justify-content: space-between; row-gap: 6px; }
+    .brand { order: 1; gap: 8px; }
+    .brand svg { width: 34px; height: 34px; }
+    .brand-text { font-size: 1.05rem; }
+    .nav-right { display: contents; }
+    .lang-group { order: 2; }
+    nav ul { order: 3; width: 100%; flex-wrap: nowrap; gap: 18px; overflow-x: auto; white-space: nowrap;
+      scrollbar-width: none; -webkit-overflow-scrolling: touch; padding: 2px 0 4px; }
+    nav ul::-webkit-scrollbar { display: none; }
     nav a.nav-link { font-size: .85rem; }
+    section { scroll-margin-top: 110px; }
     form { padding: 24px; }
   }
 </style>
@@ -297,6 +308,7 @@
        data-en="Reusable body care, made with dignity."
        data-am="በክብር የተመሠረተ ዳግም የሚያገለግል የሰውነት እንክብካቤ።"
        data-om="Kunuunsa qaamaa deebi'ee itti fayyadamamu, ulfinaan hojjetame.">Reusable body care, made with dignity.</div>
+  <button type="button" class="video-toggle" id="videoToggle" aria-label="Pause video">❚❚</button>
 </section>
 
 <header>
@@ -508,10 +520,24 @@
     if (!SHOW_HERO_VIDEO || !HERO_VIDEO) return;
     const vid = document.getElementById('heroVideo');
     const src = document.getElementById('heroVideoSrc');
+    const tog = document.getElementById('videoToggle');
     vid.poster = HERO_VIDEO_POSTER;
     src.src = HERO_VIDEO;
     box.style.display = '';
-    src.addEventListener('error', () => { box.style.display = 'none'; });
+    src.addEventListener('error', () => {
+      console.warn('Intro video hidden: file missing or unsupported format:', HERO_VIDEO);
+      box.style.display = 'none';
+    });
+    const sync = () => {
+      tog.textContent = vid.paused ? '▶' : '❚❚';
+      tog.setAttribute('aria-label', vid.paused ? 'Play video' : 'Pause video');
+    };
+    vid.addEventListener('play', sync);
+    vid.addEventListener('pause', sync);
+    tog.addEventListener('click', () => {
+      if (vid.paused) { const p = vid.play(); if (p && p.catch) p.catch(() => {}); }
+      else { vid.pause(); }
+    });
     vid.load();
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       vid.removeAttribute('autoplay');
@@ -520,6 +546,7 @@
       const p = vid.play();
       if (p && p.catch) p.catch(() => {});
     }
+    sync();
   })();
   // ==================================================
 
