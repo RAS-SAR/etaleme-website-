@@ -244,21 +244,53 @@
     .video-hero { height: 50vh; height: 50svh; }
     section { padding: 60px 0; }
   }
+
+  /* --- FIXED MOBILE NAVIGATION --- */
   @media (max-width: 600px), (max-height: 500px) and (orientation: landscape) {
-    nav { padding: 8px 0; }
-    nav .container { justify-content: space-between; row-gap: 6px; }
+    nav { 
+      padding: 10px 0; 
+      background: #ffffff; 
+      backdrop-filter: none; /* Fixes Android scrolling glitches */
+    }
+    nav .container { 
+      display: flex; 
+      flex-wrap: wrap; 
+      justify-content: space-between; 
+      align-items: center; 
+      gap: 10px;
+    }
     .brand { order: 1; gap: 8px; }
     .brand svg { width: 34px; height: 34px; }
     .brand-text { font-size: 1.05rem; }
-    .nav-right { display: contents; }
-    .lang-group { order: 2; }
-    nav ul { order: 3; width: 100%; flex-wrap: nowrap; gap: 18px; overflow-x: auto; white-space: nowrap;
-      scrollbar-width: none; -webkit-overflow-scrolling: touch; padding: 2px 0 4px; }
-    nav ul::-webkit-scrollbar { display: none; }
+    
+    /* Fixes the giant white box bug */
+    .nav-right { 
+      display: flex; 
+      flex-wrap: wrap; 
+      width: 100%; 
+      justify-content: space-between; 
+      align-items: center;
+      gap: 10px;
+    }
+    .lang-group { 
+      order: 2; 
+      margin-left: auto; /* Pushes language toggle to the right */
+    }
+    nav ul { 
+      order: 3; 
+      width: 100%; 
+      display: flex;
+      flex-wrap: wrap; /* Wraps links to two rows instead of scrolling off-screen */
+      justify-content: center;
+      gap: 12px 18px;
+      margin-top: 5px;
+    }
     nav a.nav-link { font-size: .85rem; }
-    section { scroll-margin-top: 110px; }
+    
+    section { scroll-margin-top: 120px; }
     form { padding: 24px; }
   }
+
   /* --- PHONE IN LANDSCAPE (short screens) --- */
   @media (max-height: 500px) and (orientation: landscape) {
     nav { position: static; }
@@ -280,13 +312,11 @@
 <nav>
   <div class="container">
     <a href="#" class="brand">
-      <!-- Logo A: simple teardrop (LOGO_STYLE = 'simple') -->
       <svg id="logoSimple" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="50" cy="50" r="50" fill="#5B6F3A"/>
         <path class="logo-drop" d="M50 22 C50 22 33 45 33 57 C33 65.5 40.5 72 50 72 C59.5 72 67 65.5 67 57 C67 45 50 22 50 22Z" fill="#E8A23A"/>
         <path class="logo-leaf" d="M24 64 C35 76 65 76 76 64 C65 71 35 71 24 64Z" fill="#0F5D4E"/>
       </svg>
-      <!-- Logo B: leaf cupping a droplet (LOGO_STYLE = 'concept5') -->
       <svg id="logoConcept5" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none">
         <circle cx="100" cy="100" r="95" fill="#6b7a3a"/>
         <path class="logo-drop" d="M100 46 C112 64 120 78 120 90 C120 102 111 110 100 110 C89 110 80 102 80 90 C80 78 88 64 100 46 Z" fill="#e8a13c"/>
@@ -313,7 +343,6 @@
   </div>
 </nav>
 
-<!-- INTRO VIDEO: upload your MP4 next to this file, set HERO_VIDEO in the settings. Hides itself if off or missing. -->
 <section class="video-hero" id="videoHero" style="display:none; padding:0">
   <video id="heroVideo" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
     <source id="heroVideoSrc" type="video/mp4">
@@ -342,7 +371,6 @@
     </div>
 
     <div class="hero-image">
-      <!-- CHANGE "hero.svg" TO YOUR REAL IMAGE FILENAME, AND UPDATE THE alt TEXT TO MATCH THE PICTURE -->
       <img src="hero.svg" alt="Etaleme Solutions hero illustration">
     </div>
   </div>
@@ -530,37 +558,41 @@
 
   // ==================== INTRO VIDEO ====================
   (function () {
-    const box = document.getElementById('videoHero');
-    if (!SHOW_HERO_VIDEO || !HERO_VIDEO) return;
-    const vid = document.getElementById('heroVideo');
-    const src = document.getElementById('heroVideoSrc');
-    const tog = document.getElementById('videoToggle');
-    vid.poster = HERO_VIDEO_POSTER;
-    src.src = HERO_VIDEO;
-    box.style.display = '';
-    src.addEventListener('error', () => {
-      console.warn('Intro video hidden: file missing or unsupported format:', HERO_VIDEO);
-      box.style.display = 'none';
-    });
-    const sync = () => {
-      tog.textContent = vid.paused ? '▶' : '❚❚';
-      tog.setAttribute('aria-label', vid.paused ? 'Play video' : 'Pause video');
-    };
-    vid.addEventListener('play', sync);
-    vid.addEventListener('pause', sync);
-    tog.addEventListener('click', () => {
-      if (vid.paused) { const p = vid.play(); if (p && p.catch) p.catch(() => {}); }
-      else { vid.pause(); }
-    });
-    vid.load();
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      vid.removeAttribute('autoplay');
-      vid.pause();
-    } else {
-      const p = vid.play();
-      if (p && p.catch) p.catch(() => {});
+    try {
+      const box = document.getElementById('videoHero');
+      if (!SHOW_HERO_VIDEO || !HERO_VIDEO) return;
+      const vid = document.getElementById('heroVideo');
+      const src = document.getElementById('heroVideoSrc');
+      const tog = document.getElementById('videoToggle');
+      vid.poster = HERO_VIDEO_POSTER;
+      src.src = HERO_VIDEO;
+      box.style.display = '';
+      src.addEventListener('error', () => {
+        console.warn('Intro video hidden: file missing or unsupported format:', HERO_VIDEO);
+        box.style.display = 'none';
+      });
+      const sync = () => {
+        tog.textContent = vid.paused ? '▶' : '❚❚';
+        tog.setAttribute('aria-label', vid.paused ? 'Play video' : 'Pause video');
+      };
+      vid.addEventListener('play', sync);
+      vid.addEventListener('pause', sync);
+      tog.addEventListener('click', () => {
+        if (vid.paused) { const p = vid.play(); if (p && p.catch) p.catch(() => {}); }
+        else { vid.pause(); }
+      });
+      vid.load();
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        vid.removeAttribute('autoplay');
+        vid.pause();
+      } else {
+        const p = vid.play();
+        if (p && p.catch) p.catch(() => {});
+      }
+      sync();
+    } catch (e) {
+      console.warn('Video init failed:', e);
     }
-    sync();
   })();
   // ==================================================
 
@@ -583,7 +615,6 @@
       });
     }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
     revealEls.forEach((el) => observer.observe(el));
-    // Safety net: never leave content hidden
     setTimeout(() => revealEls.forEach((el) => el.classList.add('active')), 3000);
   } else {
     revealEls.forEach((el) => el.classList.add('active'));
